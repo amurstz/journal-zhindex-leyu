@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼体育 · 日常查询与对照说明页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f3f4f7;
+      color: #1e1f2c;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .page-wrap {
+      max-width: 1020px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+    /* hero 卡片 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 3rem 2.5rem 2.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid #e8eaf0;
+      text-align: center;
+    }
+    .hero-card h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    .hero-card .sub {
+      font-size: 1.1rem;
+      color: #4b5563;
+      max-width: 530px;
+      margin: 0 auto 0.25rem;
+    }
+    .hero-card .meta-desc {
+      font-size: 0.95rem;
+      color: #6b7280;
+      border-top: 1px dashed #d1d5db;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+    }
+    /* 通用卡片 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      border: 1px solid #e4e7ed;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    }
+    .card h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+      color: #1f2937;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 1rem 0 0.4rem;
+      color: #2d3a4e;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+    .flex-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+    }
+    .feature-item {
+      flex: 1 1 180px;
+      background: #f9fafc;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      border: 1px solid #eef1f5;
+      transition: all 0.15s;
+    }
+    .feature-item strong {
+      display: block;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.2rem;
+    }
+    .feature-item span {
+      font-size: 0.92rem;
+      color: #4b5563;
+    }
+    /* faq 摘要列表 */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 0.6rem;
+    }
+    .faq-q {
+      background: #fafbfd;
+      border-radius: 14px;
+      padding: 0.7rem 1.2rem;
+      border-left: 3px solid #94a3b8;
+    }
+    .faq-q .q {
+      font-weight: 500;
+      color: #1e293b;
+    }
+    .faq-q .a {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-top: 0.15rem;
+    }
+    /* 底部链接 */
+    .footer-links {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      border: 1px solid #e4e7ed;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #5f6b7a;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+    .footer-links a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+      color: #1d4ed8;
+    }
+    .footer-links .sep {
+      margin: 0 0.5rem;
+      color: #cbd5e1;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d1d9e6, transparent);
+      margin: 0.8rem 0;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero-card { padding: 2rem 1.2rem; }
+      .hero-card h1 { font-size: 1.8rem; }
+      .card { padding: 1.5rem 1rem; }
+      .flex-features { gap: 1rem; }
+      .feature-item { flex: 1 1 140px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero 区 -->
+  <div class="hero-card">
+    <h1>乐鱼体育 · 信息对照</h1>
+    <div class="sub">日常查询、横向比较与延伸阅读的整理页面</div>
+    <div class="meta-desc">
+      基于公开信息与常见使用场景，梳理功能特点、适用方向及常见疑问。
+    </div>
+  </div>
+
+  <!-- 优势区：卡片+特点列表 -->
+  <div class="card">
+    <h2>功能优势速览</h2>
+    <div class="flex-features">
+      <div class="feature-item">
+        <strong>赛事覆盖</strong>
+        <span>覆盖主流联赛及杯赛，提供比分、赛程、积分榜等基础数据。</span>
+      </div>
+      <div class="feature-item">
+        <strong>信息结构</strong>
+        <span>界面分区清晰，便于快速定位特定联赛或球队。</span>
+      </div>
+      <div class="feature-item">
+        <strong>多端适应</strong>
+        <span>响应式布局兼顾桌面与移动设备浏览习惯。</span>
+      </div>
+      <div class="feature-item">
+        <strong>对照查询</strong>
+        <span>支持多赛事并列显示，方便横向比较。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 说明区：日常查询与延伸阅读 -->
+  <div class="card">
+    <h2>说明与使用场景</h2>
+    <p>
+      在关注体育赛事时，经常需要同时查看不同联赛的赛果、未来对阵以及球队排名。<a href="https://zhindex-leyu.com.cn">乐鱼体育</a>
+      提供了一种聚合式的信息呈现方式，将多个赛事模块组织在统一界面。用户可以根据自身需求，在页面中筛选联赛、查看实时比分或回顾近期战绩。
+    </p>
+    <p>
+      对于习惯多窗口对照的用户，可以将相关联赛页面并列，利用页面内的导航快速切换关注点。延伸阅读方面，平台通常会同步更新赛事资讯与统计图表，适合赛前分析和赛后复盘。
+    </p>
+    <h3>信息组织特点</h3>
+    <p>
+      首页通常以轮播或卡片形式展示重点赛事，下方按联赛分类陈列。积分榜和射手榜等模块设计为可折叠或选项卡形式，减少页面跳转次数。同时，搜索功能和收藏夹（若有）能帮助用户保存常用球队或联赛。
+    </p>
+    <hr>
+    <p style="font-size:0.93rem; color: #5b697a;">
+      提示：实际页面布局与具体功能以官网为准，建议结合个人使用习惯进行探索。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要（卡片形式） -->
+  <div class="card">
+    <h2>FAQ 摘要</h2>
+    <div class="faq-list">
+      <div class="faq-q">
+        <div class="q">问：是否支持查看历史赛季数据？</div>
+        <div class="a">大部分主流联赛支持回溯近几个赛季的积分、射手及交锋记录，具体深度视联赛数据源而定。</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">问：页面是否提供实时比分推送？</div>
+        <div class="a">通常提供文字直播与实时比分更新，无需手动刷新页面，延迟在可控范围内。</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">问：移动端浏览体验如何？</div>
+        <div class="a">界面采用响应式设计，在手机浏览器上会自适应为单列布局，核心操作保留。</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">问：能否将喜欢的球队设为关注？</div>
+        <div class="a">如平台提供账户系统，支持添加关注球队或联赛，在个人中心可快速查看动态。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="footer-links">
+    <span>相关资源：</span>
+    <a href="https://zhindex-leyu.com.cn">乐鱼体育</a>
+    <span class="sep">·</span>
+    <span>数据整合自公开赛事信息</span>
+    <span class="sep">·</span>
+    <span>内容仅供参考，具体请以实际页面为准</span>
+  </div>
+
+</div>
+</body>
+</html>
