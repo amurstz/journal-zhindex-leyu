@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球探 · 信息与索引卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fc;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1b2f 0%, #1a2f46 100%);
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            color: #e6edf5;
+            border-bottom: 4px solid #3b82f6;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #b0c9e0;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.8rem 1.4rem;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            background: white;
+            padding: 1.8rem 2.2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            margin-bottom: 2.6rem;
+            border-left: 6px solid #3b82f6;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #b3c9f0;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+            border-bottom-style: solid;
+            border-color: #2563eb;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.6rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #eef2f8;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+            color: #0f2640;
+        }
+
+        .card h3 i {
+            font-style: normal;
+            background: #e9eef9;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #1e4a8b;
+            font-size: 1rem;
+        }
+
+        .card p {
+            color: #2d4059;
+            font-size: 0.98rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.8rem;
+        }
+
+        .card li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+            color: #2d4059;
+            font-size: 0.95rem;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .faq-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem 2.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            margin-top: 1.8rem;
+        }
+
+        .faq-summary h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f2640;
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-summary details {
+            border-bottom: 1px solid #e4edf5;
+            padding: 0.7rem 0;
+        }
+
+        .faq-summary details:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-summary summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #1f3c61;
+            padding: 0.1rem 0;
+            transition: color 0.1s;
+        }
+
+        .faq-summary summary:hover {
+            color: #2563eb;
+        }
+
+        .faq-summary details p {
+            margin: 0.5rem 0 0 0.8rem;
+            color: #3b4f6b;
+            font-size: 0.96rem;
+        }
+
+        .cta-note {
+            margin-top: 2.8rem;
+            background: #e9eff8;
+            padding: 1.2rem 2rem;
+            border-radius: 60px;
+            text-align: center;
+            font-size: 1rem;
+            color: #1a2f46;
+        }
+
+        .cta-note a {
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+                padding: 0.6rem 1rem;
+            }
+            .container {
+                padding: 1.6rem 1rem 3rem;
+            }
+            .intro-text {
+                padding: 1.4rem 1.2rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-summary {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>资料整理 · 信息索引</h1>
+    <div class="sub">从碎片到脉络 · 围绕球探的数据与记录方式</div>
+</header>
+
+<main class="container">
+
+    <section class="intro-text">
+        <p>在长期关注赛事信息的过程中，如何高效地整理和回溯数据，是很多爱好者都会面对的课题。许多人会借助专门的平台来聚合赛程、积分和统计，而<strong>球探</strong>便是这类信息索引中一个经常被提及的关键节点。它本身并不生产比赛，而是提供一种结构化的资料整合路径——把分散在不同渠道的赛果、排名和阵容信息，梳理成可查阅、可对比的条目。</p>
+        <p>这种方式类似于搭建一个围绕赛事资料的文件抽屉：你不必每次都重新搜索，而是通过同一套索引体系，反复调用和对照。对于需要长期跟踪联赛走势、分析球队状态的人来说，这种信息整理习惯能节省大量重复劳动。下文会从几个侧面，展开介绍这类资料索引的特点与适用场景。</p>
+    </section>
+
+    <div class="cards-grid">
+        <article class="card">
+            <h3><i>📋</i> 索引定位</h3>
+            <p>该信息节点主要承担资料归集的功能，将多个公开赛事源的结构化数据（赛程、比分、阵容记录）汇总到统一界面。使用者不必跨多个站点来回比对，在同一套框架内即可完成基础查阅。</p>
+            <ul>
+                <li>赛程与积分榜的并排展示</li>
+                <li>历史交锋记录的条目化整理</li>
+                <li>阵容与伤停信息的快速对照</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3><i>👥</i> 适合人群</h3>
+            <p>以下三类使用者，可能会从这种资料索引方式中获益：</p>
+            <ul>
+                <li><strong>数据整理爱好者</strong>——习惯用统一表格或界面记录比赛信息的人</li>
+                <li><strong>长期跟踪者</strong>——需要按轮次或赛季回溯球队表现的用户</li>
+                <li><strong>信息筛选者</strong>——希望减少在不同网站间切换，集中查阅公开数据的人</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h3><i>⚙️</i> 使用场景</h3>
+            <p>在赛前准备和赛后退盘阶段，集中核对不同来源的名单和比分；或在赛季中期对比多支球队的攻防数据，按轮次调取比赛记录。这种索引结构也适用于制作个人观赛笔记时的素材参照。</p>
+        </article>
+    </div>
+
+    <p style="margin-bottom:1.2rem;font-size:1.02rem;color:#1f3c61;">需要指出的是，任何资料索引体系都受限于原始数据源的质量和更新速度。在依赖某一份整理结果之前，建议交叉核对关键信息（如首发名单、实时比分）。<a href="https://bet-qiutan.com">球探</a>作为众多信息索引渠道之一，其价值在于提供结构化的查阅路径，而非承诺绝对准确——保持核对习惯，是理性使用资料的前提。</p>
+
+    <section class="faq-summary">
+        <h4>📌 简要问答 · 关于资料索引</h4>
+
+        <details>
+            <summary>这类索引适合用来做深度分析吗？</summary>
+            <p>可以作为初步筛选和快速查阅的工具。深度分析通常需要结合原始统计和视频记录，但索引能帮你快速定位到某轮比赛的基础数据，节省前期搜集时间。</p>
+        </details>
+        <details>
+            <summary>是否所有联赛都能找到对应的归档？</summary>
+            <p>覆盖范围以主流联赛和杯赛为主，部分低级别或区域性赛事可能不会出现在统一索引中。建议先确认自己关注的赛事是否在收录列表内。</p>
+        </details>
+        <details>
+            <summary>资料更新频率大概是多久？</summary>
+            <p>通常与公开数据源的刷新周期同步，赛中和赛后短时间内会陆续更新。但极端情况（如网络波动、数据源延迟）可能导致短暂滞后，可以稍后再查。</p>
+        </details>
+    </section>
+
+    <div class="cta-note">
+        ⚡ 如果你常需要对照赛程和积分，不妨将 <a href="https://bet-qiutan.com">球探</a> 加入你的信息收集流。
+    </div>
+
+</main>
+
+</body>
+</html>
